@@ -1,7 +1,7 @@
 import copy
 kit_list = {'kit1':{'name':'martin','hp':'250','strenght':'80','endurance':'10'}}
 caracters = {}
-def set_name(kit, kit_list, carcaters):
+def set_name(kit, kit_list, caracters):
     name = input('quel est le nom du personnage ? ')
     new_caracter=copy.deepcopy(kit_list[kit])
     new_caracter['name']=name
