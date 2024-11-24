@@ -1,0 +1,5 @@
+toutes les cartes prédéfinies rangées dans une liste et dans un dictionnaire
+liste pour les indices et retrouver les noms plus facilement
+dico pour associer les noms avec les attributs
+Pré-création des cartes avec un pattern a definir avec une class Cartes
+adapter les fonctions déja existante à ces changement
