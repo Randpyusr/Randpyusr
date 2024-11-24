@@ -7,3 +7,4 @@ methods.printing_status(methods.caracters,'caillou')
 methods.attack(methods.caracters['pierre'],methods.caracters['caillou'])
 methods.printing_status(methods.caracters,'pierre')
 methods.printing_status(methods.caracters,'caillou')
+#Rien à faire dans le main pour le moment, création des cartes et des fonctions avant
