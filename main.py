@@ -1,4 +1,5 @@
 import methods
+# import cards inutilisé pour le moment 
 "test de la fonction avec pierre attaque caillou"
 methods.set_name('kit1', methods.kit_list, 'carcaters')
 methods.set_name('kit1', methods.kit_list, 'carcaters')
