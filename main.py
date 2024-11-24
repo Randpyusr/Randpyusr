@@ -7,4 +7,11 @@ methods.printing_status(methods.caracters,'caillou')
 methods.attack(methods.caracters['pierre'],methods.caracters['caillou'])
 methods.printing_status(methods.caracters,'pierre')
 methods.printing_status(methods.caracters,'caillou')
-#Rien à faire dans le main pour le moment, création des cartes et des fonctions avant
+# Test de la fonction carcter_change pour changer de personnage actif
+methods.set_name('kit1', methods.kit_list)
+methods.set_name('kit1', methods.kit_list)
+print(methods.currently_selected)
+methods.caracter_change()
+print(methods.currently_selected)
+print(methods.caracters)
+# Rien à faire dans le main pour le moment, création des cartes et des fonctions avant
