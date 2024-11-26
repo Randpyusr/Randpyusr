@@ -1,16 +1,31 @@
 import copy
+import cards
 currently_selected = None
-kit_list = {'kit1': {'name': 'martin', 'hp': 250, 'strenght': 80, 'endurance': 10}}
-caracters = {}
+kit_list = {'kit1': {'name': 'martin', 'hp': 250, 'strength': 80, 'endurance': 10}}
+characters = {
+    'Eclipse': cards.Eclipse, 'Havoc': cards.Havoc,
+    'Ironclad': cards.Ironclad, 'BlaseFury': cards.BlazeFury,
+    'Guardian': cards.Guardian, 'ShardSpire': cards.ShardSpire,
+    'JadeFang': cards.JadeFang, 'Dreadnought': cards.Dreadnought,
+    'Aegis': cards.Aegis, 'FrostBlade': cards.FrostBlade
+             }
 
 
 def set_name(kit, name=None):
     if name is None:
-        name = input('quel est le nom du personnage ? ')
-    new_caracter = copy.deepcopy(kit_list[kit])
-    new_caracter['name'] = name
-    caracters[name] = new_caracter
-    return caracters
+        while True:
+            try:
+                name = str(input("what's the name of the character ? "))
+                break
+            except ValueError:
+                print("Please enter a valid string.")
+            except EOFError:
+                print("Input ended unexpectedly.")
+                break
+    new_character = copy.deepcopy(kit_list[kit])
+    new_character['name'] = name
+    characters[name] = new_character
+    return characters
 
 
 def hp_change(name, hp_to_change):
@@ -19,22 +34,30 @@ def hp_change(name, hp_to_change):
 
 
 def printing_status(name):
-    named = caracters[name]
+    named = characters[name]
     for key, value in named.items():
         print(key, ':', value)
 
 
 def attack(attacker, attacked):
-    hp_change(attacked, (0-attacker['strenght']))
+    hp_change(attacked, (0-attacker['strength']))
     attacker['endurance'] = attacker['endurance']-2
     return attacked, attacker
 
 
-def caracter_change(name=None):
+def character_change(name=None):
     global currently_selected
     if name is None:
-        name = input("quel est le nom du personnage que vous voulez sélectionner ?")
-        if name in caracters:
+        while True:
+            try:
+                name = str(input("Which character do you want to pick ?"))
+                break
+            except ValueError:
+                print("please enter a valid name ")
+            except EOFError:
+                print("unexpected input ")
+                break
+        if name in characters:
             currently_selected = name
             return currently_selected
         else:
@@ -42,7 +65,7 @@ def caracter_change(name=None):
             currently_selected = name
             return currently_selected
     else:
-        if name in caracters:
+        if name in characters:
             currently_selected = name
             return currently_selected
         else:
@@ -53,19 +76,27 @@ def caracter_change(name=None):
 
 class Object:
 
-    def __init__(self, hp_effect, strenght_effect, endurance_effect):
+    def __init__(self, hp_effect, strength_effect, endurance_effect):
         self.hp_effect = hp_effect
-        self.strenght_effect = strenght_effect
+        self.strength_effect = strength_effect
         self.endurance_effect = endurance_effect
 
     @staticmethod
     def object_hp(hp_effect):
-        hp_change(caracters[currently_selected], hp_effect)
+        hp_change(characters[currently_selected], hp_effect)
 
     @staticmethod
-    def object_strenght(strenght_effect):
-        caracters[currently_selected]['strenght'] += strenght_effect
+    def object_strength(strength_effect):
+        characters[currently_selected]['strength'] += strength_effect
 
     @staticmethod
     def object_endurance(endurance_effect):
-        caracters[currently_selected]['endurance'] += endurance_effect
+        characters[currently_selected]['endurance'] += endurance_effect
+
+
+class Hero:
+    def __init__(self, name, strength, hp, endurance):
+        self.name = name
+        self.strength = strength
+        self.hp = hp
+        self.endurance = endurance
