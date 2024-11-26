@@ -2,13 +2,9 @@ import copy
 import cards
 currently_selected = None
 kit_list = {'kit1': {'name': 'martin', 'hp': 250, 'strength': 80, 'endurance': 10}}
-characters = {
-    'Eclipse': cards.Eclipse, 'Havoc': cards.Havoc,
-    'Ironclad': cards.Ironclad, 'BlaseFury': cards.BlazeFury,
-    'Guardian': cards.Guardian, 'ShardSpire': cards.ShardSpire,
-    'JadeFang': cards.JadeFang, 'Dreadnought': cards.Dreadnought,
-    'Aegis': cards.Aegis, 'FrostBlade': cards.FrostBlade
-             }
+characters = dict(Eclipse=cards.Eclipse, Havoc=cards.Havoc, Ironclad=cards.Ironclad, BlaseFury=cards.BlazeFury,
+                  Guardian=cards.Guardian, ShardSpire=cards.ShardSpire, JadeFang=cards.JadeFang,
+                  Dreadnought=cards.Dreadnought, Aegis=cards.Aegis, FrostBlade=cards.FrostBlade)
 
 
 def set_name(kit, name=None):
@@ -72,31 +68,3 @@ def character_change(name=None):
             set_name('kit1', name)
             currently_selected = name
             return currently_selected
-
-
-class Object:
-
-    def __init__(self, hp_effect, strength_effect, endurance_effect):
-        self.hp_effect = hp_effect
-        self.strength_effect = strength_effect
-        self.endurance_effect = endurance_effect
-
-    @staticmethod
-    def object_hp(hp_effect):
-        hp_change(characters[currently_selected], hp_effect)
-
-    @staticmethod
-    def object_strength(strength_effect):
-        characters[currently_selected]['strength'] += strength_effect
-
-    @staticmethod
-    def object_endurance(endurance_effect):
-        characters[currently_selected]['endurance'] += endurance_effect
-
-
-class Hero:
-    def __init__(self, name, strength, hp, endurance):
-        self.name = name
-        self.strength = strength
-        self.hp = hp
-        self.endurance = endurance
